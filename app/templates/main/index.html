@@ -1,0 +1,64 @@
+{% extends 'main/base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/libs/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    <form method="POST" align="center">
+        <label for="selected_value"><h4>Выберите группу: </h4></label>
+        <select id="selected_value" name="selected_value">
+            {% for value in filtered_l3 %}
+            <option value="{{ loop.index0 }}">{{ value }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Показать пары</button>
+    </form>
+
+    {% if selected_index is none %}
+        <h2 align="center">Расписание на: </h2>
+        <div id="full-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Группа/Номер пары</th>
+                        <th>Название пары</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item1, item2 in zipped_list %}
+                    <tr>
+                        <td>{{ item1 }}</td>
+                        <td>{{ item2 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+    {% if selected_index is not none %}
+        <div id="filtered-table">
+            <h2 align="center">Расписание для группы "{{ filtered_l3[selected_index] }}" на: </h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Группа/Номер пары</th>
+                        <th>Название пары</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for next_value, corrl_l2 in zipped_list2 %}
+                    <tr>
+                        <td>{{ next_value }}</td>
+                        <td>{{ corrl_l2 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}

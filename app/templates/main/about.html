@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/libs/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+{% block title %}О нас{% endblock %}
+
+{% block content %}
+<h1 align="center">О нас</h1>
+<p>
+    <h4 align="center">Данный сайт создавался кровью, потом и ночными посиделками в дс (пришлось его взломать, чтобы работал) Антоном Авдоничевым и Артёмом Лянге</h4>
+</p>
+{% endblock %}

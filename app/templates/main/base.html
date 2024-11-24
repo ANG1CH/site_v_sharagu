@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block style %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+<header class="header">{% include 'main/_header.html' %}</header>
+
+<div class="page">
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">{% include 'main/_footer.html' %}</footer>
+</div>
+
+    <script scr="{{ url_for('static', filename='js/libs/bootstrap.min.js') }}"></script>
+    <script scr="{{ url_for('static', filename='js/app.js') }}"></script>
+    {% block script %}{% endblock %}
+</body>
+</html>
