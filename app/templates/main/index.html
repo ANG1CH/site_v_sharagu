@@ -15,9 +15,9 @@
             <option value="{{ loop.index0 }}">{{ value }}</option>
             {% endfor %}
         </select>
-        <button type="submit">Показать пары</button>
+        <button class="btn btn-primary rounded-pill px-3" type="button">Показать пары</button>
     </form>
-
+    <p></p>
     {% if selected_index is none %}
         <h2 align="center">Расписание на: </h2>
         <div id="full-table">
